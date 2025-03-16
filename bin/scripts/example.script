@@ -1,9 +1,0 @@
-counter = 0;
-
-function onBlockBreak(event) {
-    event.getPlayer().sendMessage("You broke " + ++counter + " blocks.");
-}
-
-function onPlayerDeath(event) {
-    event.getPlayer().sendMessage("You died!");
-}
