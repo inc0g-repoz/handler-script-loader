@@ -1,0 +1,3 @@
+[submodule "low-tier-script-engine"]
+	path = low-tier-script-engine
+	url = https://github.com/inc0g-repoz/low-tier-script-engine
