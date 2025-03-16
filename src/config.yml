@@ -1,0 +1,17 @@
+# spigot-script-loader configuration
+# Make sure you are using valid classpaths. Use the link below for reference:
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/package-summary.html
+
+# Function mapping
+scripts:
+  example:
+    file: "scripts/example.script"
+    events:
+      on-player-death:
+        event-class: "org.bukkit.event.entity.PlayerDeathEvent"
+        function: "onPlayerDeath"
+        priority: "NORMAL"
+      on-block-break:
+        event-class: "org.bukkit.event.block.BlockBreakEvent"
+        function: "onBlockBreak"
+        priority: "NORMAL"
