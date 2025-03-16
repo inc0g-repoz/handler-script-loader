@@ -1,11 +1,12 @@
-package com.github.inc0grepoz.ssl;
+package com.github.inc0grepoz.hsl;
 
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.github.inc0grepoz.ssl.handler.CommandHandler;
-import com.github.inc0grepoz.ssl.util.ScriptLoader;
+import com.github.inc0grepoz.hsl.handler.CommandHandler;
+import com.github.inc0grepoz.hsl.util.ScriptLoader;
 
+@SuppressWarnings("deprecation")
 public class SpigotPlugin extends JavaPlugin {
 
     private final ScriptLoader loader = new ScriptLoader(this);
@@ -16,7 +17,8 @@ public class SpigotPlugin extends JavaPlugin {
 
         loader.loadScripts();
 
-        getCommand("spigot-script-loader").setExecutor(new CommandHandler(this));
+        String command = getDescription().getCommands().keySet().iterator().next();
+        getCommand(command).setExecutor(new CommandHandler(this));
     }
 
     @Override

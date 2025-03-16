@@ -1,4 +1,4 @@
-package com.github.inc0grepoz.ssl.handler;
+package com.github.inc0grepoz.hsl.handler;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;

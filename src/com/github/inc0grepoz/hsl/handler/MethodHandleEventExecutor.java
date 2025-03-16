@@ -1,4 +1,4 @@
-package com.github.inc0grepoz.ssl.handler;
+package com.github.inc0grepoz.hsl.handler;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;

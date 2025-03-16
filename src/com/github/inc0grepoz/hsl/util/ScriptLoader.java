@@ -1,4 +1,4 @@
-package com.github.inc0grepoz.ssl.util;
+package com.github.inc0grepoz.hsl.util;
 
 import java.io.File;
 import java.io.FileReader;
@@ -13,12 +13,13 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.EventExecutor;
 import org.bukkit.plugin.Plugin;
 
+import com.github.inc0grepoz.hsl.handler.Handler;
+import com.github.inc0grepoz.hsl.handler.MethodHandleEventExecutor;
 import com.github.inc0grepoz.ltse.Script;
 import com.github.inc0grepoz.ltse.ScriptExecutor;
 import com.github.inc0grepoz.ltse.unit.UnitFunction;
-import com.github.inc0grepoz.ssl.handler.Handler;
-import com.github.inc0grepoz.ssl.handler.MethodHandleEventExecutor;
 
+@SuppressWarnings("unchecked")
 public class ScriptLoader {
 
     private final ScriptExecutor executor = new ScriptExecutor();
@@ -72,7 +73,6 @@ public class ScriptLoader {
         HandlerList.unregisterAll(plugin);
     }
 
-    @SuppressWarnings("unchecked")
     private void registerHandler(Script script, String scriptName,
             String fileName, String eventClass, String function,
             EventPriority priority) throws Throwable {

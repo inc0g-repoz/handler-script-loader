@@ -1,10 +1,11 @@
-name: SpigotScriptLoader
+name: HandlerScriptLoader
 version: 1.0
-main: com.github.inc0grepoz.ssl.SpigotPlugin
+main: com.github.inc0grepoz.hsl.SpigotPlugin
 author: LeadRounds
 description: A script engine.
 
 commands:
-  spigot-script-loader:
-    aliases: [ssl]
+  handler-script-loader:
+    aliases: [hsl]
     description: Reveals the plugin functionality
+    usage: /<command> reload

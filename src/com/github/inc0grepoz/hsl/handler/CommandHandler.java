@@ -1,4 +1,4 @@
-package com.github.inc0grepoz.ssl.handler;
+package com.github.inc0grepoz.hsl.handler;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
-import com.github.inc0grepoz.ssl.SpigotPlugin;
+import com.github.inc0grepoz.hsl.SpigotPlugin;
 
 public class CommandHandler implements CommandExecutor, TabCompleter {
 
