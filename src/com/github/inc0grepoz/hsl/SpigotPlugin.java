@@ -1,6 +1,5 @@
 package com.github.inc0grepoz.hsl;
 
-import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.inc0grepoz.hsl.handler.CommandHandler;
@@ -24,7 +23,6 @@ public class SpigotPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         loader.unloadScripts();
-        HandlerList.unregisterAll(this);
     }
 
     public void reload() {
