@@ -3,6 +3,7 @@ package com.github.inc0grepoz.hsl.util;
 import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -10,7 +11,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.EventExecutor;
 import org.bukkit.plugin.Plugin;
 
 import com.github.inc0grepoz.hsl.handler.Handler;
@@ -48,7 +48,7 @@ public class ScriptLoader {
             try (FileReader reader = new FileReader(new File(plugin.getDataFolder(), fileName))) {
                 script = executor.load(reader);
             } catch (Throwable t) {
-                plugin.getLogger().warning("Failed to load script " + scriptName
+                plugin.getLogger().log(Level.SEVERE, "Failed to load script " + scriptName
                         + " (" + fileName + "): " + t);
                 continue;
             }
@@ -59,9 +59,9 @@ public class ScriptLoader {
                 priority = EventPriority.valueOf(events.getString(event + ".priority", "NORMAL"));
 
                 try {
-                    registerHandler(script, scriptName, fileName, eventClass, function, priority);
+                    registerHandler(script, eventClass, function, priority);
                 } catch (Throwable t) {
-                    plugin.getLogger().warning("Failed to register a handler from script "
+                    plugin.getLogger().log(Level.SEVERE, "Failed to register a handler from script "
                             + scriptName + " (" + fileName + "): " + t);
                 }
             }
@@ -73,19 +73,21 @@ public class ScriptLoader {
         HandlerList.unregisterAll(plugin);
     }
 
-    private void registerHandler(Script script, String scriptName,
-            String fileName, String eventClass, String function,
+    private void registerHandler(Script script, String eventClass, String function,
             EventPriority priority) throws Throwable {
+
         UnitFunction fn = script.getFunction(function, 1);
+
+        if (fn == null) {
+            throw new AssertionError("Missing function " + function);
+        }
+
         Class<? extends Event> clazz = (Class<? extends Event>) Class.forName(eventClass);
         Method method = Handler.class.getDeclaredMethods()[0];
         Bukkit.getPluginManager().registerEvent(clazz, new Handler<>(fn), priority,
-                generateExecutor(clazz, method), plugin, false);
-        plugin.getLogger().info("Registered handler " + function + "(" + eventClass + ")");
-    }
+                new MethodHandleEventExecutor(clazz, method), plugin, false);
 
-    private EventExecutor generateExecutor(Class<? extends Event> clazz, Method method) {
-        return new MethodHandleEventExecutor(clazz, method);
+        plugin.getLogger().info("Registered handler " + function + "(" + eventClass + ")");
     }
 
 }
