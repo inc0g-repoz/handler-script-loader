@@ -29,6 +29,12 @@ public class ScriptLoader {
         this.plugin = plugin;
     }
 
+    public void initLoaderDirectory()
+    {
+        File loaderDirectory = new File(plugin.getDataFolder(), "scripts");
+        executor.setLoaderDirectory(loaderDirectory);
+    }
+
     public void loadScripts() {
         FileConfiguration config = plugin.getConfig();
 

@@ -14,6 +14,7 @@ public class SpigotPlugin extends JavaPlugin {
     public void onEnable() {
         saveDefaults();
 
+        loader.initLoaderDirectory();
         loader.loadScripts();
 
         String command = getDescription().getCommands().keySet().iterator().next();
