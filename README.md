@@ -1,7 +1,8 @@
+[icon]: https://raw.githubusercontent.com/inc0g-repoz/low-tier-script-engine/refs/heads/main/src/assets/icon.png
 [LTSE]: https://github.com/inc0g-repoz/low-tier-script-engine
 [Spigot-API]: https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
 
-# Handler Script Loader
+# ![icon] Handler Script Loader
 A loader for event handlers from [LTSE] scripts. Allows developers to manage [LTSE] scripts and use them for handling events on Spigot servers.
 
 ### Compatibility
