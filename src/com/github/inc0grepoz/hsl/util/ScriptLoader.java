@@ -46,7 +46,7 @@ public class ScriptLoader {
         Script script;
 
         for (String scriptName: scripts.getKeys(false)) {
-            if (scripts.getBoolean("enabled")) {
+            if (!scripts.getBoolean("enabled")) {
                 continue;
             }
 
