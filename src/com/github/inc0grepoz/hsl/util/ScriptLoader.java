@@ -46,6 +46,10 @@ public class ScriptLoader {
         Script script;
 
         for (String scriptName: scripts.getKeys(false)) {
+            if (scripts.getBoolean("enabled")) {
+                continue;
+            }
+
             fileName = scripts.getString(scriptName + ".file");
             events = scripts.getConfigurationSection(scriptName + ".events");
 

@@ -1,10 +1,15 @@
 # handler-script-loader configuration
-# Make sure you are using valid classpaths. Use the link below for reference:
+# 
+# The LTSE language reference:
+# https://github.com/inc0g-repoz/low-tier-script-engine
+# 
+# Make sure you are using valid event types. Use the link below for reference:
 # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/package-summary.html
 
 # Function mapping
 scripts:
   example:
+    enabled: true
     file: "scripts/example.script"
     events:
       on-player-death:
