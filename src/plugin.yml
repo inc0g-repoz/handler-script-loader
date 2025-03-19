@@ -8,4 +8,5 @@ commands:
   handler-script-loader:
     aliases: [hsl]
     description: Reveals the plugin functionality
+    permission: handlerscriptloader.reload
     usage: /<command> reload
