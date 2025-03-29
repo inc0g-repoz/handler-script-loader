@@ -11,6 +11,8 @@ scripts:
   example:
     enabled: true
     file: "scripts/example.script"
+    
+    # Mappings for event handlers
     events:
       on-player-death:
         event-class: "org.bukkit.event.entity.PlayerDeathEvent"
@@ -20,3 +22,13 @@ scripts:
         event-class: "org.bukkit.event.block.BlockBreakEvent"
         function: "onBlockBreak"
         priority: "NORMAL"
+    
+    # Mappings for commands
+    commands:
+      test-command:
+        aliases: ["test-command-alias"]             # Other names for this command
+        description: "Eliminates the player"        # Comprehensive description
+        permission: "handlerscriptloader.test"      # Permission required to execute
+        usage: "/<command> [player]"                # Pops up, if false is returned
+        function-exe: "onCommandTest"               # Executes the command
+        function-tab: "onTabCompleteTest"           # Suggests arguments

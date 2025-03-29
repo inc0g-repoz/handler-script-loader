@@ -5,7 +5,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.github.inc0grepoz.hsl.handler.CommandHandler;
 import com.github.inc0grepoz.hsl.util.ScriptLoader;
 
-@SuppressWarnings("deprecation")
 public class SpigotPlugin extends JavaPlugin {
 
     private final ScriptLoader loader = new ScriptLoader(this);

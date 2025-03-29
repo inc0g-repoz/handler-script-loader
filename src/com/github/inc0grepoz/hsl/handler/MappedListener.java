@@ -6,11 +6,11 @@ import org.bukkit.event.Listener;
 
 import com.github.inc0grepoz.ltse.unit.UnitFunction;
 
-public class Handler<T extends Event> implements Listener {
+public class MappedListener<T extends Event> implements Listener {
 
     private final UnitFunction fn;
 
-    public Handler(UnitFunction fn) {
+    public MappedListener(UnitFunction fn) {
         this.fn = fn;
     }
 

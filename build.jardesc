@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1251" standalone="no"?>
 <jardesc>
     <jar path="D:/.folder/Servers/servers/paper_1_20_4_imm1/plugins/handler-script-loader.jar"/>
-    <options buildIfNeeded="true" compress="true" descriptionLocation="/handler-script-loader/.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/handler-script-loader/build.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">

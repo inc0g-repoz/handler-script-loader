@@ -7,3 +7,14 @@ function onBlockBreak(event) {
 function onPlayerDeath(event) {
     event.getPlayer().sendMessage("You died!");
 }
+
+function onCommandTest(sender, alias, args) {
+    sender.setHealth(0.0);
+}
+
+list = new_instance("java.util.ArrayList", new_array("java.lang.Object", 0));
+list.add("suggestion");
+
+function onTabCompleteTest(sender, alias, args) {
+    return list;
+}
