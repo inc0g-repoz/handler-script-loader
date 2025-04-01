@@ -5,6 +5,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.github.inc0grepoz.hsl.handler.CommandHandler;
 import com.github.inc0grepoz.hsl.util.ScriptLoader;
 
+/**
+ * The main class of HandlerScriptLoader.
+ * 
+ * @author inc0g-repoz
+ */
 public class SpigotPlugin extends JavaPlugin {
 
     private final ScriptLoader loader = new ScriptLoader(this);
@@ -25,12 +30,18 @@ public class SpigotPlugin extends JavaPlugin {
         loader.unloadScripts();
     }
 
+    /**
+     * Reloads the plugin configuration and scripts.
+     */
     public void reload() {
         loader.unloadScripts();
         reloadConfig();
         loader.loadScripts();
     }
 
+    /**
+     * Saves default resources.
+     */
     public void saveDefaults() {
         if (!getDataFolder().exists()) {
             saveDefaultConfig();

@@ -18,13 +18,19 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 
-import com.github.inc0grepoz.hsl.handler.MappedListener;
+import com.github.inc0grepoz.hsl.event.ScriptUnloadEvent;
 import com.github.inc0grepoz.hsl.handler.MappedCommand;
+import com.github.inc0grepoz.hsl.handler.MappedListener;
 import com.github.inc0grepoz.hsl.handler.MethodHandleEventExecutor;
 import com.github.inc0grepoz.ltse.Script;
 import com.github.inc0grepoz.ltse.ScriptExecutor;
 import com.github.inc0grepoz.ltse.unit.UnitFunction;
 
+/**
+ * Represents a storage for plugin managed LTSE scripts.
+ * 
+ * @author inc0g-repoz
+ */
 @SuppressWarnings("unchecked")
 public class ScriptLoader {
 
@@ -33,16 +39,28 @@ public class ScriptLoader {
     private final CommandMapProvider commandMap = new CommandMapProvider();
     private final Plugin plugin;
 
+    /**
+     * Creates a new loader for the specified instance of plugin.
+     * 
+     * @param plugin a plugin instance
+     */
     public ScriptLoader(Plugin plugin) {
         this.plugin = plugin;
     }
 
+    /**
+     * Only used once the plugin is enabled to indicate that the
+     * scripts directory can be selected for LTSE.
+     */
     public void initLoaderDirectory()
     {
         File loaderDirectory = new File(plugin.getDataFolder(), "scripts");
         executor.setLoaderDirectory(loaderDirectory);
     }
 
+    /**
+     * Loads all scripts and maps functions to events and commands.
+     */
     public void loadScripts() {
         FileConfiguration config = plugin.getConfig();
 
@@ -76,6 +94,7 @@ public class ScriptLoader {
         }
     }
 
+    // Only loads and maps events from a script
     private void loadScriptEvents(String fileName, String scriptName, Script script,
             ConfigurationSection section) {
 
@@ -104,6 +123,7 @@ public class ScriptLoader {
         }
     }
 
+    // Creates and registers a listener for an event
     private void registerHandler(Script script, String function, String eventClass,
             EventPriority priority) throws Throwable {
 
@@ -121,6 +141,7 @@ public class ScriptLoader {
         plugin.getLogger().info("Registered handler " + function + "(" + eventClass + ")");
     }
 
+    // Only loads and maps commands from a script
     private void loadScriptCommands(String fileName, String scriptName, Script script,
             ConfigurationSection section) {
 
@@ -152,6 +173,7 @@ public class ScriptLoader {
         }
     }
 
+    // Registers and maps a single command from a script
     private void registerCommand(Script script, String fnExe, String fnTab,
             String name, String description, String permission, String usage,
             List<String> aliases) {
@@ -170,12 +192,17 @@ public class ScriptLoader {
         plugin.getLogger().info("Mapped command /" + name + " to " + fnExe);
     }
 
+    /**
+     * Unloads all scripts with all of their handlers.
+     */
     public void unloadScripts() {
+        Bukkit.getPluginManager().callEvent(new ScriptUnloadEvent());
         executor.unloadAll();
         unregisterCommands();
         HandlerList.unregisterAll(plugin);
     }
 
+    // Unregisters all the commands
     private void unregisterCommands() {
         Map<String, Command> knownCommands = commandMap.getKnownCommands();
 

@@ -10,6 +10,11 @@ import com.github.inc0grepoz.ltse.Script;
 import com.github.inc0grepoz.ltse.unit.UnitFunction;
 import com.github.inc0grepoz.ltse.util.PrimitiveTester;
 
+/**
+ * A single command mapped to execute a function.
+ * 
+ * @author inc0g-repoz
+ */
 @SuppressWarnings("unchecked")
 public class MappedCommand extends Command {
 
