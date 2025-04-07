@@ -1,9 +1,9 @@
 [icon]: https://raw.githubusercontent.com/inc0g-repoz/low-tier-script-engine/refs/heads/main/src/assets/icon.png
-[LTSE]: https://github.com/inc0g-repoz/low-tier-script-engine
+[LIX4J]: https://github.com/inc0g-repoz/lix4j
 [Spigot-API]: https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
 
 # ![icon] Handler Script Loader
-A loader for event handlers from [LTSE] scripts. Allows developers to manage [LTSE] scripts and use them for handling events on Spigot servers.
+A loader for event handlers from [LIX4J] scripts. Allows developers to manage [LIX4J] scripts and use them for handling events on Spigot servers.
 
 ### Commands
 In fact, you only need one command: `/handler-script-loader reload` (or an `/hsl reload` shortcut). Requires a `handlerscriptloader.reload` permission to be used.
