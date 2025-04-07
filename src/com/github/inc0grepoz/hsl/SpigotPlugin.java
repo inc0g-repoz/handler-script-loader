@@ -3,7 +3,9 @@ package com.github.inc0grepoz.hsl;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.inc0grepoz.hsl.handler.CommandHandler;
+import com.github.inc0grepoz.hsl.util.Lix4jLoader;
 import com.github.inc0grepoz.hsl.util.ScriptLoader;
+import com.github.inc0grepoz.hsl.util.proxy.IScriptExecutor;
 
 /**
  * The main class of HandlerScriptLoader.
@@ -12,12 +14,17 @@ import com.github.inc0grepoz.hsl.util.ScriptLoader;
  */
 public class SpigotPlugin extends JavaPlugin {
 
-    private final ScriptLoader loader = new ScriptLoader(this);
+    private ScriptLoader loader;
 
     @Override
     public void onEnable() {
         saveDefaults();
 
+        Lix4jLoader lix4jLoader = new Lix4jLoader(this);
+        lix4jLoader.update();
+        IScriptExecutor executor = lix4jLoader.load();
+
+        loader = new ScriptLoader(this, executor);
         loader.initLoaderDirectory();
         loader.loadScripts();
 

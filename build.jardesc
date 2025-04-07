@@ -11,15 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.util"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.value"/>
-        <file path="/low-tier-script-engine/LICENSE"/>
         <javaElement handleIdentifier="=handler-script-loader/src"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.ast"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.exception"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.unit"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.unit.expression"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse"/>
-        <javaElement handleIdentifier="=low-tier-script-engine/src&lt;com.github.inc0grepoz.ltse.unit.inbuilt"/>
     </selectedElements>
 </jardesc>

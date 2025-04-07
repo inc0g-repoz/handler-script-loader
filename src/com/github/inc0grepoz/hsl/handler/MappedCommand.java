@@ -6,9 +6,9 @@ import java.util.Objects;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import com.github.inc0grepoz.ltse.Script;
-import com.github.inc0grepoz.ltse.unit.UnitFunction;
-import com.github.inc0grepoz.ltse.util.PrimitiveTester;
+import com.github.inc0grepoz.hsl.util.proxy.IScript;
+import com.github.inc0grepoz.hsl.util.proxy.IUnitFunction;
+import com.github.inc0grepoz.lix4j.util.PrimitiveTester;
 
 /**
  * A single command mapped to execute a function.
@@ -18,21 +18,21 @@ import com.github.inc0grepoz.ltse.util.PrimitiveTester;
 @SuppressWarnings("unchecked")
 public class MappedCommand extends Command {
 
-    private final UnitFunction fne, fnt;
+    private final IUnitFunction fne, fnt;
 
-    public MappedCommand(Script script, String fnExe, String fnTab,
+    public MappedCommand(IScript script, String fnExe, String fnTab,
             String name, String description, String permission, String usage,
             List<String> aliases) {
 
         super(name, description, usage, aliases);
 
-        fne = Objects.requireNonNull(script.getFunction(fnExe, 3),
+        fne = Objects.requireNonNull(IUnitFunction.of(script.getFunction(fnExe, 3)),
                 "Function not found (" + fnExe + ")");
 
         if (fnTab == null) {
             fnt = null;
         } else {
-            fnt = Objects.requireNonNull(script.getFunction(fnTab, 3),
+            fnt = Objects.requireNonNull(IUnitFunction.of(script.getFunction(fnTab, 3)),
                     "Function not found (" + fnTab + ")");
         }
 

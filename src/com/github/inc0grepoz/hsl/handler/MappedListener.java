@@ -4,7 +4,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.github.inc0grepoz.ltse.unit.UnitFunction;
+import com.github.inc0grepoz.hsl.util.proxy.IUnitFunction;
 
 /**
  * A single event listener handled by a function.
@@ -14,9 +14,9 @@ import com.github.inc0grepoz.ltse.unit.UnitFunction;
  */
 public class MappedListener<T extends Event> implements Listener {
 
-    private final UnitFunction fn;
+    private final IUnitFunction fn;
 
-    public MappedListener(UnitFunction fn) {
+    public MappedListener(IUnitFunction fn) {
         this.fn = fn;
     }
 

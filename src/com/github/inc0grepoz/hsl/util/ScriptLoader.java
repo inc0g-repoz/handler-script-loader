@@ -16,41 +16,42 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
 
+import com.github.inc0grepoz.hsl.SpigotPlugin;
 import com.github.inc0grepoz.hsl.event.ScriptUnloadEvent;
 import com.github.inc0grepoz.hsl.handler.MappedCommand;
 import com.github.inc0grepoz.hsl.handler.MappedListener;
 import com.github.inc0grepoz.hsl.handler.MethodHandleEventExecutor;
-import com.github.inc0grepoz.ltse.Script;
-import com.github.inc0grepoz.ltse.ScriptExecutor;
-import com.github.inc0grepoz.ltse.unit.UnitFunction;
+import com.github.inc0grepoz.hsl.util.proxy.IScript;
+import com.github.inc0grepoz.hsl.util.proxy.IScriptExecutor;
+import com.github.inc0grepoz.hsl.util.proxy.IUnitFunction;
 
 /**
- * Represents a storage for plugin managed LTSE scripts.
+ * Represents a storage for plugin managed LIX4J scripts.
  * 
  * @author inc0g-repoz
  */
 @SuppressWarnings("unchecked")
 public class ScriptLoader {
 
-    private final ScriptExecutor executor = new ScriptExecutor();
+    private final IScriptExecutor executor;
     private final Set<Command> commands = new HashSet<>();
     private final CommandMapProvider commandMap = new CommandMapProvider();
-    private final Plugin plugin;
+    private final SpigotPlugin plugin;
 
     /**
      * Creates a new loader for the specified instance of plugin.
      * 
      * @param plugin a plugin instance
      */
-    public ScriptLoader(Plugin plugin) {
+    public ScriptLoader(SpigotPlugin plugin, IScriptExecutor executor) {
         this.plugin = plugin;
+        this.executor = (IScriptExecutor) executor;
     }
 
     /**
      * Only used once the plugin is enabled to indicate that the
-     * scripts directory can be selected for LTSE.
+     * scripts directory can be selected for LIX4J.
      */
     public void initLoaderDirectory()
     {
@@ -69,7 +70,7 @@ public class ScriptLoader {
 
         // Temp common
         String fileName;
-        Script script;
+        IScript script;
 
         for (String scriptName: scripts.getKeys(false)) {
             if (!scripts.getBoolean(scriptName + ".enabled")) {
@@ -79,7 +80,7 @@ public class ScriptLoader {
             fileName = scripts.getString(scriptName + ".file");
 
             try (FileReader reader = new FileReader(new File(plugin.getDataFolder(), fileName))) {
-                script = executor.load(reader);
+                script = IScript.of(executor.load(reader));
             } catch (Throwable t) {
                 plugin.getLogger().log(Level.SEVERE, "Failed to load script " + scriptName
                         + " (" + fileName + "): " + t);
@@ -95,7 +96,7 @@ public class ScriptLoader {
     }
 
     // Only loads and maps events from a script
-    private void loadScriptEvents(String fileName, String scriptName, Script script,
+    private void loadScriptEvents(String fileName, String scriptName, IScript script,
             ConfigurationSection section) {
 
         Set<String> keys = section.getKeys(false);
@@ -124,10 +125,10 @@ public class ScriptLoader {
     }
 
     // Creates and registers a listener for an event
-    private void registerHandler(Script script, String function, String eventClass,
+    private void registerHandler(IScript script, String function, String eventClass,
             EventPriority priority) throws Throwable {
 
-        UnitFunction fn = script.getFunction(function, 1);
+        IUnitFunction fn = IUnitFunction.of(script.getFunction(function, 1));
 
         if (fn == null) {
             throw new AssertionError("Missing function " + function);
@@ -142,7 +143,7 @@ public class ScriptLoader {
     }
 
     // Only loads and maps commands from a script
-    private void loadScriptCommands(String fileName, String scriptName, Script script,
+    private void loadScriptCommands(String fileName, String scriptName, IScript script,
             ConfigurationSection section) {
 
         Set<String> keys = section.getKeys(false);
@@ -174,7 +175,7 @@ public class ScriptLoader {
     }
 
     // Registers and maps a single command from a script
-    private void registerCommand(Script script, String fnExe, String fnTab,
+    private void registerCommand(IScript script, String fnExe, String fnTab,
             String name, String description, String permission, String usage,
             List<String> aliases) {
 

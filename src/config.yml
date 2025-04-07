@@ -1,7 +1,7 @@
 # handler-script-loader configuration
 # 
-# The LTSE language reference:
-# https://github.com/inc0g-repoz/low-tier-script-engine
+# The LIX4J language reference:
+# https://github.com/inc0g-repoz/lix4j
 # 
 # Make sure you are using valid event types. Use the link below for reference:
 # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/package-summary.html
@@ -32,3 +32,8 @@ scripts:
         usage: "/<command> [player]"                # Pops up, if false is returned
         function-exe: "onCommandTest"               # Executes the command
         function-tab: "onTabCompleteTest"           # Suggests arguments
+
+# Toggles checks of updates released for LIX4J.
+# Do not modify anything but 'enabled'.
+updater:
+  enabled: true
