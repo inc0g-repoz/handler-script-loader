@@ -14,4 +14,4 @@ Only tested on 1.20.4, but should work on any versions of Spigot and Paper serve
 ### Dependencies
 The dependencies required for building are listed below:
 - [Spigot-API] – can be grabbed from the libraries bundle of your server (provided);
-- [LTSE] – should be cloned from the respective repository (compile).
+- [LIX4J] – should be cloned from the respective repository (compile).
