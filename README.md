@@ -1,4 +1,4 @@
-[icon]: https://raw.githubusercontent.com/inc0g-repoz/low-tier-script-engine/refs/heads/main/src/assets/icon.png
+[icon]: https://raw.githubusercontent.com/inc0g-repoz/lix4j/refs/heads/main/src/assets/icon.png
 [LIX4J]: https://github.com/inc0g-repoz/lix4j
 [Spigot-API]: https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
 
