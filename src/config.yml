@@ -10,7 +10,7 @@
 scripts:
   example:
     enabled: true
-    file: "scripts/example.script"
+    file: "scripts/example.lix"
     
     # Mappings for event handlers
     events:

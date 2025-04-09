@@ -52,7 +52,7 @@ public class SpigotPlugin extends JavaPlugin {
     public void saveDefaults() {
         if (!getDataFolder().exists()) {
             saveDefaultConfig();
-            saveResource("scripts/example.script", false);
+            saveResource("scripts/example.lix", false);
         }
     }
 
